@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  content: MyText
+  answerable: one (MultipleChoiceQuestion)
+
+two:
+  user: two
+  content: MyText
+  answerable: two (MultipleChoiceQuestion)

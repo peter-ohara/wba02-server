@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  credits: 1
+  price_pesewas: 1
+  print_time: 2017-03-13 20:03:21
+  usage_time: 2017-03-13 20:03:21
+  user: one
+
+two:
+  code: MyString
+  credits: 1
+  price_pesewas: 1
+  print_time: 2017-03-13 20:03:21
+  usage_time: 2017-03-13 20:03:21
+  user: two

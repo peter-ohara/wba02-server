@@ -1,0 +1,61 @@
+rails new . --api --database=postgresql
+
+
+rails generate scaffold School name:string short_name:string
+
+
+rails generate scaffold Programme name:string school:references
+
+
+rails generate scaffold Course code:string name:string level:integer semester:integer
+
+
+rails generate scaffold Offering programme:references course:references
+
+
+rails generate scaffold Quiz course:references instructions:string duration:float quiz_type:integer year:integer
+
+
+
+
+
+
+rails generate scaffold Header quiz:references priority:integer title:string content:text
+
+
+rails generate scaffold EssayQuestion quiz:references priority:integer number:string question:text answer:text explanation:text
+
+
+rails generate scaffold FillInQuestion quiz:references priority:integer number:string question:text answer:text explanation:text
+
+
+rails generate scaffold MultipleChoiceQuestion quiz:references priority:integer number:string question:text choices:string answer:text explanation:text
+
+
+
+
+rails generate scaffold User display_name:string email:string
+
+
+
+
+rails generate scaffold Comment user:references parent:references content:text commentable:references{polymorphic}
+
+
+rails generate scaffold Upvote user:references comment:references
+rails generate scaffold Downvote user:references comment:references
+
+
+
+
+rails generate scaffold Answer user:references content:text answerable:references{polymorphic}
+
+
+
+
+rails generate scaffold Purchase user:references quiz:references
+
+
+
+
+rails generate scaffold Voucher code:string credits:integer price_pesewas:integer print_time:datetime usage_time:datetime user:references
