@@ -36,6 +36,7 @@ class AndroidV1::TakeQuizScreenController < ApplicationController
       content[:type] = get_quiz_content_type(quiz_content)
       content[:title] = quiz_content.is_a?(Header) ? quiz_content.title : quiz_content.number
       content[:content] = quiz_content.is_a?(Header) ? quiz_content.content : quiz_content.question
+      content[:choices] = quiz_content.choices if quiz_content.is_a?(MultipleChoiceQuestion)
       content[:comments] = quiz_content.comments
       content[:answers] = []
       quiz_contents.push(content)
