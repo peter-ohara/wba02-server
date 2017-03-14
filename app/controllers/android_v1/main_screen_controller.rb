@@ -14,12 +14,10 @@ class AndroidV1::MainScreenController < ApplicationController
         question_count += quiz.fill_in_questions.count
         question_count += quiz.essay_questions.count
 
-        result[course.code].push({
-            "id": quiz.id,
-            "course_code": quiz.course.code,
-            "name": "#{quiz.year} #{quiz.quiz_type}",
-            "question_count": question_count,
-          })
+        result[course.code].push(id: quiz.id,
+                                 course_code: quiz.course.code,
+                                 name: "#{quiz.year} #{quiz.quiz_type}",
+                                 question_count: question_count)
       end
     end
 
