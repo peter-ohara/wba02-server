@@ -19,7 +19,7 @@ class AndroidV1::CommentsController < ApplicationController
 
   # POST /comments
   def create
-    get_comment_from_params
+    @comment = Comment.new(comment_params)
 
     if @comment.save
       render json: @comment, status: :created, location: @comment
@@ -28,20 +28,9 @@ class AndroidV1::CommentsController < ApplicationController
     end
   end
 
-  def get_comment_from_params
-    @comment = Comment.new
-    @comment.user_id = 1 # get_current_user
-    @comment.content = comment_params[:content]
-    @comment.commentable_type = 'Comment'
-    @comment.commentable_id = comment_params[:parent]
-  end
-
   # PATCH/PUT /comments/1
   def update
-    if @comment.update(user_id: 1,
-                       content: comment_params[:content],
-                       commentable_type: 'Comment',
-                       commentable_id: comment_params[:parent])
+    if @comment.update(comment_params)
       render json: @comment
     else
       render json: @comment.errors, status: :unprocessable_entity
@@ -62,8 +51,11 @@ class AndroidV1::CommentsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def comment_params
-    params.require(:comment).permit(:id,
+    checked_params = params.require(:comment).permit(:id,
                                     :user_id,
+
+                                    :commentable_type,
+                                    :commentable_id,
 
                                     :parent,
 
@@ -82,5 +74,10 @@ class AndroidV1::CommentsController < ApplicationController
                                     :created_by_current_user,
                                     :upvote_count,
                                     :user_has_upvoted)
+
+    { user_id: 1, # TODO: get_current_user
+      content: checked_params[:content],
+      commentable_type: checked_params[:parent].blank? ? checked_params[:commentable_type] : 'Comment',
+      commentable_id: checked_params[:parent].blank? ? checked_params[:commentable_id] : checked_params[:parent] }
   end
 end

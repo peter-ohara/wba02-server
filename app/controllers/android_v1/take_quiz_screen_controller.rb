@@ -87,13 +87,14 @@ class AndroidV1::TakeQuizScreenController < ApplicationController
 
   def get_quiz_content_type(quiz_content)
     if quiz_content.is_a?(Header)
-      :header
+      'Header'
     elsif quiz_content.is_a?(EssayQuestion)
-      :essay_question
+      'EssayQuestion'
     elsif quiz_content.is_a?(FillInQuestion)
-      :fill_in_question
+      'FillInQuestion'
     elsif quiz_content.is_a?(MultipleChoiceQuestion)
-      :multiple_choice_question
+      'MultipleChoiceQuestion'
     end
   end
 end
+c
