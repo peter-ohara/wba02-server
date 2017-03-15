@@ -7,7 +7,8 @@ Rails.application.routes.draw do
               :multiple_choice_question_screen,
               :fill_in_question_screen,
               :essay_question_screen,
-              :header_screen
+              :header_screen,
+              :comments
   end
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

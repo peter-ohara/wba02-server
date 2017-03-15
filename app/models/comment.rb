@@ -2,6 +2,8 @@ class Comment < ApplicationRecord
   belongs_to :user, inverse_of: :comments
   belongs_to :commentable, polymorphic: true
 
+  has_many :comments, as: :commentable
+
   belongs_to :parent,
              class_name: 'Comment',
              inverse_of: :replies,
