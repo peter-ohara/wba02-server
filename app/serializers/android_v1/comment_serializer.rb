@@ -32,15 +32,15 @@ class AndroidV1::CommentSerializer < ActiveModel::Serializer
   end
 
   def file_url
-    'fileUrl'
+    nil
   end
 
   def file
-    'file'
+    nil
   end
 
   def file_mime_type
-    'fileMimeType'
+    nil
   end
 
   def fullname
