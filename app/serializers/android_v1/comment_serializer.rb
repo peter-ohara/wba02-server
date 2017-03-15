@@ -1,5 +1,6 @@
 class AndroidV1::CommentSerializer < ActiveModel::Serializer
-  attributes :user_id,
+  attributes :id,
+             :user_id,
 
              :parent,
 

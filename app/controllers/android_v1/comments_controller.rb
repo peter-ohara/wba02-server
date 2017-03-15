@@ -55,7 +55,8 @@ class AndroidV1::CommentsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def comment_params
-    params.require(:comment).permit(:user_id,
+    params.require(:comment).permit(:id,
+                                    :user_id,
 
                                     :parent,
 
