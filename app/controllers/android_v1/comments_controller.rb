@@ -19,11 +19,7 @@ class AndroidV1::CommentsController < ApplicationController
 
   # POST /comments
   def create
-    @comment = Comment.new
-    @comment.user_id = comment_params[:user_id]
-    @comment.content = comment_params[:content]
-    @comment.commentable_type = 'Comment'
-    @comment.commentable_id = comment_params[:parent]
+    get_comment_from_params
 
     if @comment.save
       render json: @comment, status: :created, location: @comment
@@ -32,9 +28,20 @@ class AndroidV1::CommentsController < ApplicationController
     end
   end
 
+  def get_comment_from_params
+    @comment = Comment.new
+    @comment.user_id = 1 # get_current_user
+    @comment.content = comment_params[:content]
+    @comment.commentable_type = 'Comment'
+    @comment.commentable_id = comment_params[:parent]
+  end
+
   # PATCH/PUT /comments/1
   def update
-    if @comment.update(comment_params)
+    if @comment.update(user_id: 1,
+                       content: comment_params[:content],
+                       commentable_type: 'Comment',
+                       commentable_id: comment_params[:parent])
       render json: @comment
     else
       render json: @comment.errors, status: :unprocessable_entity

@@ -67,7 +67,6 @@ class AndroidV1::TakeQuizScreenController < ApplicationController
     raw_comments.each do |raw_comment|
       formatted_comment = {}
       formatted_comment[:id] = raw_comment.id
-      formatted_comment[:parent] = raw_comment.parent_id
       formatted_comment[:created] = raw_comment.created_at
       formatted_comment[:modified] = raw_comment.updated_at
       formatted_comment[:content] = raw_comment.content
