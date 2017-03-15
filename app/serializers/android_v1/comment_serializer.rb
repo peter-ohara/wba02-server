@@ -23,6 +23,14 @@ class AndroidV1::CommentSerializer < ActiveModel::Serializer
     object.commentable_id
   end
 
+  def created
+    object.created_at
+  end
+
+  def modified
+    object.updated_at
+  end
+
   def file_url
     'fileUrl'
   end
