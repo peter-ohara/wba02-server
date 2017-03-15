@@ -20,7 +20,7 @@ class AndroidV1::CommentSerializer < ActiveModel::Serializer
              :user_has_upvoted
 
   def parent
-    object.commentable_id
+    object.commentable_id if object.commentable_type == 'Comment'
   end
 
   def created
