@@ -20,4 +20,15 @@ class Quiz < ApplicationRecord
     "#{course.code} #{year} #{quiz_type}" unless new_record?
   end
 
+  def quiz_contents
+    quiz_contents = []
+
+    quiz_contents += multiple_choice_questions
+    quiz_contents += fill_in_questions
+    quiz_contents += essay_questions
+    quiz_contents += headers
+
+    quiz_contents.sort_by! { |k| k[:priority] }
+  end
+
 end
