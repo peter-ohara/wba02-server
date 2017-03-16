@@ -97,4 +97,3 @@ class AndroidV1::TakeQuizScreenController < ApplicationController
     end
   end
 end
-c
