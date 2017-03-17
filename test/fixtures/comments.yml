@@ -2,10 +2,12 @@
 
 one:
   user: one
+  parent: one
   content: MyText
   commentable: one (MultipleChoiceQuestion)
 
 two:
   user: two
+  parent: two
   content: MyText
   commentable: two (MultipleChoiceQuestion)

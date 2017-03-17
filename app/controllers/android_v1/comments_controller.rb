@@ -77,7 +77,8 @@ class AndroidV1::CommentsController < ApplicationController
 
     { user_id: 1, # TODO: get_current_user
       content: checked_params[:content],
-      commentable_type: checked_params[:parent].blank? ? checked_params[:commentable_type] : 'Comment',
-      commentable_id: checked_params[:parent].blank? ? checked_params[:commentable_id] : checked_params[:parent] }
+      commentable_type: checked_params[:commentable_type],
+      commentable_id: checked_params[:commentable_id],
+      parent_id: checked_params[:parent] }
   end
 end
