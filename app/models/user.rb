@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_secure_token :auth_token
+
   has_many :comments, inverse_of: :user, dependent: :destroy
 
   has_many :upvotes, inverse_of: :user, dependent: :destroy
