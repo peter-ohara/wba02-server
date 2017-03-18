@@ -39,8 +39,11 @@ class AndroidV1::QuizContentSerializer < ActiveModel::Serializer
   end
 
   def comments
+    current_user
     object.comments.map do |comment|
-      AndroidV1::CommentSerializer.new(comment)
+      AndroidV1::CommentSerializer.new(comment,
+                                       scope: current_user,
+                                       scope_name: :current_user)
     end
   end
 

@@ -49,11 +49,11 @@ class AndroidV1::CommentSerializer < ActiveModel::Serializer
   end
 
   def profile_url
-    'user.profileUrl'
+    nil
   end
 
   def profile_picture_url
-    'user.profilePictureURL'
+    object.user.profile_url
   end
 
   def created_by_admin
@@ -61,7 +61,7 @@ class AndroidV1::CommentSerializer < ActiveModel::Serializer
   end
 
   def created_by_current_user
-    true
+    object.user.id == current_user.id
   end
 
   def upvote_count
@@ -69,6 +69,7 @@ class AndroidV1::CommentSerializer < ActiveModel::Serializer
   end
 
   def user_has_upvoted
-    false
+    # check if the user has upvoted this comments
+    Upvote.exists?(user: current_user, comment: object)
   end
 end
