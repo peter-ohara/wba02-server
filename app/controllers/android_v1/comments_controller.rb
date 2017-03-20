@@ -75,7 +75,7 @@ class AndroidV1::CommentsController < ApplicationController
                                     :upvote_count,
                                     :user_has_upvoted)
 
-    { user_id: 1, # TODO: get_current_user
+    { user_id: @current_user.id,
       content: checked_params[:content],
       commentable_type: checked_params[:commentable_type],
       commentable_id: checked_params[:commentable_id],
