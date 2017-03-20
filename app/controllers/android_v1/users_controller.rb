@@ -3,14 +3,14 @@ class AndroidV1::UsersController < ApplicationController
 
   # POST /users
   def create
-    # @user = User.new(user_params)
-    # @user = User.where(email: user_params[:email]).first_or_initialize
-    # @user = User.find_by_email(email: user_params[:email])
-
     @user = User.where(email: user_params[:email]).first_or_create(user_params)
 
+    @user.display_name = user_params[:display_name]
+    @user.email = user_params[:email]
+    @user.profile_url = user_params[:profile_url]
+    @user.regenerate_auth_token
 
-    if @user.update(user_params)
+    if @user.save
       render json: @user, status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
