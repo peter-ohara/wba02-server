@@ -9,7 +9,9 @@ Rails.application.routes.draw do
               :essay_question_screen,
               :header_screen,
               :comments,
-              :store_screen
+              :store_screen,
+              :upvotes,
+              :users
   end
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
