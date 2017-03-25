@@ -34,6 +34,9 @@ gem 'rails_admin_import', '~> 1.2'
 # Active Model Serializers
 gem 'active_model_serializers', '~> 0.10.0'
 
+# CanCan for Authorization
+gem 'cancan'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

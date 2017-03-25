@@ -46,6 +46,7 @@ GEM
     arel (7.1.4)
     builder (3.2.3)
     byebug (9.0.6)
+    cancan (1.6.10)
     case_transform (0.2)
       activesupport
     coffee-rails (4.2.1)
@@ -188,6 +189,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.10.0)
   byebug
+  cancan
   listen (~> 3.0.5)
   pg (~> 0.18)
   puma (~> 3.0)
@@ -203,4 +205,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.14.0
+   1.14.6
