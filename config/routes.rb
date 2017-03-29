@@ -11,7 +11,9 @@ Rails.application.routes.draw do
               :comments,
               :store_screen,
               :upvotes,
-              :users
+              :users,
+              :store_screen,
+              :buy_tests_screen
   end
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

@@ -1,6 +1,6 @@
 class AndroidV1::MainScreenController < ApplicationController
   def index
-    @courses = Course.all
+    @courses = Course.order(:code)
 
     result = Hash.new
 
@@ -21,6 +21,6 @@ class AndroidV1::MainScreenController < ApplicationController
       end
     end
 
-    render json: result
+    render json: @courses
   end
 end

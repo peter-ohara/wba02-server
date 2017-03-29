@@ -1,6 +1,6 @@
 class AndroidV1::StoreScreenController < ApplicationController
   def index
-    @courses = Course.all
+    @courses = Course.order(:code)
 
     render json: @courses
   end

@@ -1,7 +1,7 @@
 class Quiz < ApplicationRecord
   belongs_to :course, inverse_of: :quizzes
 
-  enum quiz_type: [:mid_semester, :end_of_semester, :class_test]
+  enum quiz_type: ['Mid Semester', 'End of Semester', 'Class Test', 'Assignment']
   serialize :instructions, Array
 
   has_many :headers, inverse_of: :quiz, dependent: :destroy
