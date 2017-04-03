@@ -46,6 +46,6 @@ class QuizzesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def quiz_params
-      params.require(:quiz).permit(:course_id, :instructions, :duration, :quiz_type, :year)
+      params.require(:quiz).permit(:course_id, :instructions, :duration, :quiz_type, :year, :pasco_credits)
     end
 end
