@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+
+  post 'create_multiple_vouchers', to: 'vouchers#create_multiple_vouchers'
+
   namespace :android_v1 do
     resources :main_screen,
               :quiz_overview_screen,

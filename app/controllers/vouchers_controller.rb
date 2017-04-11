@@ -24,6 +24,16 @@ class VouchersController < ApplicationController
     end
   end
 
+  def create_multiple_vouchers
+    number = params[:number]
+    pasco_credits = params[:pasco_credits]
+    price = params[:price]
+
+    vouchers = Voucher.create_vouchers(number, pasco_credits, price)
+
+    render json: vouchers, status: :created, location: @voucher
+  end
+
   # PATCH/PUT /vouchers/1
   def update
     if @voucher.update(voucher_params)
