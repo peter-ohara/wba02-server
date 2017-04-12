@@ -47,7 +47,9 @@ class User < ApplicationRecord
   private
 
   def add_quiz(quiz)
-    raise ArgumentError, 'Quiz costs more than user can afford' if self.pasco_credits < quiz.pasco_credits
+    error_message = 'Quiz costs more than users credit balance'
+    raise ArgumentError, error_message if pasco_credits.nil?
+    raise ArgumentError, error_message if pasco_credits < quiz.pasco_credits
     self.pasco_credits -= quiz.pasco_credits
     save!
     quizzes << quiz

@@ -23,8 +23,6 @@ class AndroidV1::BuyTestsScreenController < ApplicationController
       render json: @current_user
     rescue ArgumentError => e
       render json: e.message, status: :unprocessable_entity
-    rescue Exception => e
-      render json: e.message, status: :unprocessable_entity
     end
   end
 
