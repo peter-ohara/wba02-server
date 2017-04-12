@@ -22,7 +22,9 @@ class AndroidV1::BuyTestsScreenController < ApplicationController
       @current_user.buy_quizzes(quiz_ids)
       render json: @current_user
     rescue ArgumentError => e
-      render json: e, status: :unprocessable_entity
+      render json: e.message, status: :unprocessable_entity
+    rescue Exception => e
+      render json: e.message, status: :unprocessable_entity
     end
   end
 
