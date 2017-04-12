@@ -10,19 +10,19 @@ class AndroidV1::BuyTestsScreenController < ApplicationController
 
   # GET /courses/1
   def show
-    @quizzes = Quiz.where(course_id: params[:id])
-
     render json: @course
   end
 
-  # POST /courses
-  def create
-    @course = Course.new(course_params)
+  # POST /buy_tests
+  def buy_tests
+    params.permit(:test_ids)
+    quiz_ids = params[:test_ids]
 
-    if @course.save
-      render json: @course, status: :created, location: @course
-    else
-      render json: @course.errors, status: :unprocessable_entity
+    begin
+      @current_user.buy_quizzes(quiz_ids)
+      render json: @current_user
+    rescue ArgumentError => e
+      render json: e, status: :unprocessable_entity
     end
   end
 
@@ -41,6 +41,7 @@ class AndroidV1::BuyTestsScreenController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_course
     @course = Course.find(params[:id])

@@ -17,6 +17,9 @@ Rails.application.routes.draw do
               :users,
               :store_screen,
               :buy_tests_screen
+
+    post 'load_voucher', to: 'load_voucher_screen#load_voucher'
+    post 'buy_tests', to: 'buy_tests_screen#buy_tests'
   end
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

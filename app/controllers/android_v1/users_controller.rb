@@ -1,5 +1,13 @@
 class AndroidV1::UsersController < ApplicationController
-  skip_before_action :authenticate, except:  [:update]
+  skip_before_action :authenticate, only: [:create]
+
+
+  # GET /users/1
+  def show
+    @user = User.find_by(auth_token: params[:id])
+
+    render json: @user
+  end
 
   # POST /users
   def create
@@ -9,6 +17,8 @@ class AndroidV1::UsersController < ApplicationController
     @user.email = user_params[:email]
     @user.profile_url = user_params[:profile_url]
     @user.regenerate_auth_token
+
+    @current_user = @user
 
     if @user.save
       render json: @user, status: :created, location: @user

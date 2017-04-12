@@ -12,6 +12,9 @@ class Voucher < ApplicationRecord
   # price_pesewas must be an integer greater than 0
   validates :credits, numericality: { only_integer: true, greater_than: 0 }
 
+  def used?
+    user_id? && usage_time?
+  end
 
   def self.create_vouchers(number, pasco_credits, price)
     vouchers = []
