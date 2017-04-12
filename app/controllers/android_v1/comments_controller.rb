@@ -1,5 +1,5 @@
 class AndroidV1::CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :update, :destroy]
+  before_action :set_comment, only: [:update, :destroy]
 
   # GET /comments
   def index
@@ -10,7 +10,9 @@ class AndroidV1::CommentsController < ApplicationController
 
   # GET /comments/1
   def show
-    render json: @comment
+    @comments = Comment.where(user_id: @current_user.id,
+                              commentable_id: params[:id])
+    render json: @comments
   end
 
   def get_formatted_comment(raw_comment)
